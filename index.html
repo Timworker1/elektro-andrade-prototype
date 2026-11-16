@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+</head>
+<body>
+<title>Elektro Andrade</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Elektro Andrade – Elektromeisterbetrieb in Heilbronn. Elektroinstallation, Photovoltaik, Sat-, Sicherheits- und Netzwerktechnik, Brandschutz und E-Check. Tel. 07131 12011301.">
+<meta name="theme-color" content="#F5D000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: the page is a switchboard. Label-tape yellow opens the page as the brand colour, clean near-white ground,
+   anthracite cabinet for the services (flip a breaker to open a service), conductor colours L1/L2/L3/N/PE as a band.
+   Conversion is phone + e-mail only: in every section, plus a sticky call bar on phones. Left-aligned, radius by role. */
+:root{
+  --bg:#F6F7F4; --surface:#ECEEE9; --card:#FFFFFF; --ink:#1B2023; --ink-2:#4E565B; --rule:#D2D7D1;
+  --panel:#1F2427; --panel-2:#2A3034; --panel-deep:#161A1C; --panel-rule:#3C4449; --on-panel:#EEF0EC; --on-panel-2:#A9B2B6;
+  --tape:#F5D000; --tape-hi:#FFE03D; --tape-ink:#1A1803; --tape-rule:rgba(26,24,3,.18);
+  --led:#D6432B; --led-off:#6E8F72; --live:#2FB457;
+  --module:#F3F3EF; --module-2:#D5D7D0; --lever:#23272A;
+  --w1:#7A4A2B; --w2:#121517; --w3:#8C9295; --wn:#2F6DB4; --wpe:#3A9A3E;
+  --btn:#1B2023; --btn-ink:#F6F7F4; --btn-hover:#363E43;
+  --display:'Barlow Condensed','Arial Narrow','Roboto Condensed',sans-serif;
+  --body:'Barlow',system-ui,'Segoe UI',Roboto,sans-serif;
+  --maxw:1240px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121516; --surface:#191D1F; --card:#1F2427; --ink:#ECEEEA; --ink-2:#A4ACB0; --rule:#2C3337;
+  --panel:#22282B; --panel-2:#2C3236; --panel-deep:#0D1011; --panel-rule:#3D454A;
+  --tape:#EBC800; --tape-hi:#FFDB2E;
+  --module:#E4E5E0; --module-2:#BFC2BB; --w2:#4B5155;
+  --btn:#F5D000; --btn-ink:#1A1803; --btn-hover:#FFE03D; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121516; --surface:#191D1F; --card:#1F2427; --ink:#ECEEEA; --ink-2:#A4ACB0; --rule:#2C3337;
+  --panel:#22282B; --panel-2:#2C3236; --panel-deep:#0D1011; --panel-rule:#3D454A;
+  --tape:#EBC800; --tape-hi:#FFDB2E;
+  --module:#E4E5E0; --module-2:#BFC2BB; --w2:#4B5155;
+  --btn:#F5D000; --btn-ink:#1A1803; --btn-hover:#FFE03D; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:700;line-height:1;letter-spacing:-.005em;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+ul,ol,dl,dd{margin:0;padding:0;list-style:none}
+figure{margin:0}
+.i{width:22px;height:22px;fill:currentColor;flex:none}
+.wrap{max-width:var(--maxw);margin-inline:auto;
+  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:3px solid var(--wn);outline-offset:3px}
+.sec{padding-block:clamp(64px,10vw,128px)}
+.sec.s2{background:var(--surface)}
+.sec h2{font-size:clamp(2.4rem,5vw,3.9rem)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,5vw,72px);align-items:end;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head p{color:var(--ink-2);max-width:500px}
+@media(max-width:820px){.sec-head{grid-template-columns:1fr}}
+
+/* label tape */
+.tape{display:inline-block;background:var(--tape);color:var(--tape-ink);font-family:var(--display);font-weight:600;
+  font-size:15px;line-height:1;letter-spacing:.02em;padding:5px 8px 4px;border-radius:3px;
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.12);white-space:nowrap}
+
+/* conductor band */
+.wires{display:flex;height:6px}
+.wires i{flex:1}
+.wires i:nth-child(1){background:var(--w1)}.wires i:nth-child(2){background:#121517}.wires i:nth-child(3){background:var(--w3)}
+.wires i:nth-child(4){background:var(--wn)}
+.wires i:nth-child(5){background:repeating-linear-gradient(110deg,var(--wpe) 0 14px,#F5D000 14px 28px)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:8px;
+  font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.01em;text-decoration:none;border:2px solid transparent;
+  cursor:pointer;transition:background-color .18s,border-color .18s,color .18s,transform .18s;white-space:nowrap;font-variant-numeric:tabular-nums}
+.btn .i{width:21px;height:21px}
+.btn:active{transform:translateY(1px)}
+.btn-main{background:var(--btn);color:var(--btn-ink)}
+.btn-main:hover{background:var(--btn-hover)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+.btn-tape{background:var(--tape);color:var(--tape-ink)}
+.btn-tape:hover{background:var(--tape-hi)}
+.btn-line{border-color:var(--on-panel-2);color:var(--on-panel)}
+.btn-line:hover{border-color:var(--on-panel);background:rgba(255,255,255,.06)}
+.btn-sm{min-height:44px;padding:0 16px;font-size:18px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.cta-hint{margin-top:14px;font-size:15px;color:var(--ink-2)}
+@media(max-width:560px){.cta-row{display:grid;grid-template-columns:1fr}.cta-row .btn{width:100%}}
+
+/* live office status */
+.status{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15.5px}
+.status .dot{width:10px;height:10px;border-radius:50%;background:var(--led-off);flex:none}
+.status.open .dot{background:var(--live);box-shadow:0 0 0 4px color-mix(in srgb,var(--live) 25%,transparent);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--live) 0%,transparent)}}
+
+/* header */
+.header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.logo .tape{font-size:19px;font-weight:700;letter-spacing:.06em;padding:8px 11px 7px;text-transform:uppercase}
+.logo small{font-size:14px;color:var(--ink-2);line-height:1.25}
+.nav{display:flex;gap:28px}
+.nav a{text-decoration:none;font-weight:500;font-size:16px;color:var(--ink-2);padding:6px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--tape)}
+.h-right{display:flex;align-items:center;gap:10px}
+.h-mail{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;border:2px solid var(--rule);color:var(--ink);transition:border-color .15s}
+.h-mail:hover{border-color:var(--ink)}
+.burger{display:none;width:44px;height:44px;border:2px solid var(--rule);border-radius:8px;background:transparent;color:var(--ink);cursor:pointer;place-items:center}
+.mnav{display:none;border-top:1px solid var(--rule);background:var(--bg)}
+.mnav.open{display:block}
+.mnav a{display:block;padding:15px 0;border-bottom:1px solid var(--rule);font-family:var(--display);font-weight:600;font-size:24px;text-decoration:none}
+.mnav .cta-row{margin:20px 0 24px}
+@media(max-width:1180px){.nav{display:none}.burger{display:grid}}
+@media(max-width:720px){.logo small{display:none}.h-right .btn-sm .num{display:none}}
+@media(max-width:400px){.logo .tape{font-size:16px;padding:7px 9px 6px}.h-mail{display:none}}
+@media(min-width:721px){.h-right .btn-sm .short{display:none}}
+
+/* hero: label-tape yellow */
+.hero{background:var(--tape);color:var(--tape-ink);padding-top:clamp(36px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:center}
+.hero .status{background:rgba(255,255,255,.55);padding:7px 14px 7px 12px;border-radius:99px}
+.hero h1{font-size:clamp(3.5rem,8.8vw,7.6rem);font-weight:800;line-height:.88;letter-spacing:-.02em;margin-top:24px}
+.lead{font-size:clamp(18px,1.6vw,20.5px);max-width:560px;margin-top:26px;color:rgba(26,24,3,.82)}
+.hero .btn-main{background:var(--tape-ink);color:var(--tape)}
+.hero .btn-main:hover{background:#000}
+.hero .btn-ghost{border-color:var(--tape-ink);color:var(--tape-ink)}
+.hero .btn-ghost:hover{background:var(--tape-ink);color:var(--tape)}
+.hero .cta-hint{color:rgba(26,24,3,.75)}
+.hero .cta-hint b{color:var(--tape-ink);font-weight:600;white-space:nowrap}
+.hero-fig{position:relative}
+.hero-fig img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:38% 50%;border-radius:12px;box-shadow:0 40px 70px -40px rgba(26,24,3,.65)}
+.hero-fig figcaption{position:absolute;left:14px;bottom:14px;right:14px;display:flex;align-items:center;gap:10px;font-size:14.5px;font-weight:500;
+  color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.hero-fig figcaption .tape{text-shadow:none}
+.creds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(44px,6vw,76px);border-top:1.5px solid var(--tape-rule)}
+.creds li{display:flex;gap:12px;align-items:flex-start;padding:22px 20px 26px 0}
+.creds li+li{padding-left:20px;border-left:1.5px solid var(--tape-rule)}
+.creds .i{width:26px;height:26px;margin-top:1px}
+.creds b{display:block;font-family:var(--display);font-weight:700;font-size:20px;line-height:1.15}
+.creds span{display:block;font-size:15px;color:rgba(26,24,3,.75);line-height:1.4;margin-top:2px}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-fig img{aspect-ratio:16/11}
+  .creds{grid-template-columns:repeat(2,minmax(0,1fr))}.creds li:nth-child(3){padding-left:0;border-left:0}
+  .creds li:nth-child(n+3){border-top:1.5px solid var(--tape-rule)}}
+@media(max-width:460px){.creds li,.creds li+li{padding:16px 12px 18px 0}.creds li:nth-child(even){padding-left:12px}
+  .creds b{font-size:18px}.creds span{font-size:14px}.creds .i{display:none}}
+
+/* switchboard */
+.cab{background:var(--panel);border-radius:16px;padding:clamp(16px,3vw,32px);color:var(--on-panel);
+  box-shadow:inset 0 0 0 1px var(--panel-rule),0 40px 70px -45px rgba(0,0,0,.7)}
+.cab-head{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:14.5px;color:var(--on-panel-2);padding-bottom:18px;border-bottom:1px solid var(--panel-rule)}
+.cab-head b{font-family:var(--display);font-weight:600;font-size:18px;color:var(--on-panel)}
+.rail{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(6px,1vw,12px);padding-top:30px}
+.mcb{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0;background:none;border:0;color:inherit;
+  font:inherit;cursor:pointer;text-align:center;min-width:0;-webkit-tap-highlight-color:transparent}
+.mcb::before{content:"";position:absolute;top:-30px;left:50%;width:4px;height:30px;margin-left:-2px;background:var(--w2);border-radius:2px}
+.mcb:nth-child(even)::before{background:var(--wn)}
+.mcb-body{position:relative;width:100%;max-width:96px;height:170px;border-radius:4px;
+  background:linear-gradient(90deg,var(--module-2),var(--module) 18%,var(--module) 82%,var(--module-2));
+  box-shadow:0 2px 0 rgba(0,0,0,.25);display:block;transition:transform .15s}
+.mcb-body::before,.mcb-body::after{content:"";position:absolute;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;
+  background:radial-gradient(circle,#55595c 0 2px,#8d9194 2.5px 5px,#c4c7c3 5.5px)}
+.mcb-body::before{top:12px}.mcb-body::after{bottom:12px}
+.slot{position:absolute;left:50%;top:44px;width:34px;height:66px;margin-left:-17px;border-radius:3px;background:#3c4144;box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+.lever{position:absolute;left:3px;right:3px;height:30px;top:33px;border-radius:2px;background:var(--lever);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 2px 3px rgba(0,0,0,.5);transition:top .28s cubic-bezier(.5,1.6,.5,1)}
+.led{position:absolute;left:50%;top:120px;width:14px;height:8px;margin-left:-7px;border-radius:1px;background:var(--led-off);transition:background-color .2s}
+.mcb .tape{font-size:14px}
+.mcb-name{font-family:var(--display);font-weight:600;font-size:17px;line-height:1.1;color:var(--on-panel-2);hyphens:auto;overflow-wrap:anywhere;transition:color .15s}
+.mcb[aria-selected="true"] .lever{top:3px}
+.mcb[aria-selected="true"] .led{background:var(--led)}
+.mcb[aria-selected="true"] .mcb-name{color:var(--on-panel)}
+.mcb:hover .mcb-body{transform:translateY(-2px)}
+.mcb:hover .mcb-name{color:var(--on-panel)}
+.mcb:focus-visible{outline:none}
+.mcb:focus-visible .mcb-body{outline:3px solid var(--tape);outline-offset:4px}
+.cab.boot .mcb .lever{top:33px;transition:none}
+.cab.boot .mcb .led{background:var(--led-off)}
+@media(max-width:820px){.rail{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:46px}.mcb-body{height:140px;max-width:84px}
+  .slot{top:36px;height:56px}.lever{height:26px;top:27px}.cab.boot .mcb .lever{top:27px}.led{top:100px}.mcb-name{font-size:15px}
+  .cab-head span{display:none}}
+
+.pane{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,5vw,64px);margin-top:24px;
+  background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:clamp(22px,4vw,44px)}
+.pane h3{font-size:clamp(2rem,3.4vw,2.6rem);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pane h3 .tape{font-size:17px}
+.pane p{margin-top:16px;color:var(--ink-2);max-width:540px}
+.pane .cta-row{margin-top:28px}
+.checks{display:grid;align-content:start;border-top:1px solid var(--rule)}
+.checks li{display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--rule);font-weight:500}
+.checks .i{width:18px;height:18px;color:var(--wpe)}
+@media(max-width:820px){.pane{grid-template-columns:1fr}.pane .checks{order:-1;margin-top:-4px}.pane>div{order:-2}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,88px);align-items:start}
+.about-fig img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:30% 50%;border-radius:12px}
+.about-fig figcaption{margin-top:12px;font-size:14.5px;color:var(--ink-2)}
+.quote{margin-top:26px;font-family:var(--display);font-weight:500;font-size:clamp(24px,2.4vw,30px);line-height:1.25;max-width:620px}
+.about-txt{margin-top:20px;color:var(--ink-2);max-width:600px}
+.owner{margin-top:20px;font-size:15.5px;color:var(--ink-2)}
+.owner b{color:var(--ink);font-weight:600}
+.points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;margin-top:36px}
+.points div{padding:20px 0 22px;border-top:1px solid var(--rule)}
+.points dt{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:22px}
+.points dt .i{width:22px;height:22px;color:var(--ink-2)}
+.points dd{margin-top:6px;font-size:16px;color:var(--ink-2)}
+@media(max-width:900px){.about{grid-template-columns:1fr}.about-fig img{aspect-ratio:16/11}}
+@media(max-width:560px){.points{grid-template-columns:1fr}}
+
+/* photovoltaik */
+.pv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
+.pv-body>p{margin-top:22px;color:var(--ink-2);max-width:520px}
+.spec{margin-top:30px;border-top:1px solid var(--rule)}
+.spec div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:20px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.spec dt{font-family:var(--display);font-weight:600;font-size:19px}
+.spec dd{color:var(--ink-2)}
+.pv-fig{position:relative}
+.pv-fig img{width:100%;aspect-ratio:5/6;object-fit:cover;border-radius:12px}
+.pv-fig .tape{position:absolute;top:22px;left:-12px;font-size:clamp(28px,3vw,38px);font-weight:800;padding:10px 16px 8px;transform:rotate(-2.5deg);
+  box-shadow:inset 0 -2px 0 rgba(0,0,0,.12),0 10px 24px -10px rgba(0,0,0,.5)}
+.pv-fig figcaption{margin-top:12px;font-size:14.5px;color:var(--ink-2);max-width:460px}
+@media(max-width:900px){.pv{grid-template-columns:1fr}.pv-fig{order:-1}.pv-fig img{aspect-ratio:16/11}.pv-fig .tape{left:12px}}
+@media(max-width:480px){.spec div{grid-template-columns:1fr;gap:2px}}
+
+/* process: terminals on a wire */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;position:relative}
+.steps::before{content:"";position:absolute;top:23px;left:24px;right:24px;height:3px;
+  background:linear-gradient(90deg,var(--w1),var(--w3) 35%,var(--wn) 70%,var(--wpe))}
+.step{position:relative}
+.term{position:relative;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--tape);color:var(--tape-ink);
+  border:3px solid var(--surface);box-shadow:0 0 0 2px var(--ink);font-family:var(--display);font-weight:800;font-size:21px}
+.step h3{font-size:26px;margin-top:22px}
+.step p{margin-top:10px;font-size:16px;color:var(--ink-2)}
+.ablauf-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;margin-top:clamp(40px,5vw,60px);
+  padding:clamp(22px,3vw,32px);background:var(--card);border:1px solid var(--rule);border-radius:14px}
+.ablauf-cta p{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.4vw,28px);line-height:1.15;max-width:520px}
+.ablauf-cta .cta-row{margin-top:0}
+@media(max-width:900px){.steps{grid-template-columns:1fr;gap:28px}
+  .steps::before{top:24px;bottom:24px;left:23px;right:auto;width:3px;height:auto;background:linear-gradient(180deg,var(--w1),var(--w3) 35%,var(--wn) 70%,var(--wpe))}
+  .step{padding-left:72px}.term{position:absolute;left:0;top:0}.step h3{margin-top:10px}}
+@media(max-width:560px){.ablauf-cta .cta-row{width:100%}}
+
+/* e-check */
+.echeck{background:var(--panel);color:var(--on-panel);padding-block:clamp(56px,7vw,96px)}
+.ec{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.sticker{width:clamp(140px,17vw,210px);height:auto;transform:rotate(-8deg);filter:drop-shadow(0 14px 22px rgba(0,0,0,.5))}
+.sticker .st-bg{fill:var(--tape)}
+.sticker .st-line{fill:none;stroke:var(--tape-ink);stroke-width:1.5}
+.sticker text{fill:var(--tape-ink);font-family:var(--display)}
+.sticker .st-hole{fill:var(--panel)}
+.ec h2{font-size:clamp(2.1rem,4vw,3.3rem)}
+.ec p{margin-top:16px;color:var(--on-panel-2);max-width:640px}
+@media(max-width:760px){.ec{grid-template-columns:1fr}}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 18px}
+.gal figure{min-width:0}
+.gal img{width:100%;height:280px;object-fit:cover;border-radius:10px}
+.gal .w2{grid-column:span 2}
+.gal figcaption{margin-top:10px;font-size:15.5px;font-weight:500;line-height:1.4}
+.gal figcaption span{display:block;color:var(--ink-2);font-size:14px;font-weight:400}
+@media(max-width:900px){.gal{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}.gal img{height:190px}}
+@media(max-width:480px){.gal img{height:150px}.gal .w2 img{height:210px}}
+
+/* contact: the numbers are the hero */
+.contact{background:var(--panel);color:var(--on-panel);padding-block:clamp(64px,9vw,120px)}
+.contact .status{color:var(--on-panel)}
+.contact h2{font-size:clamp(2.4rem,5vw,3.9rem);margin-top:22px}
+.c-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,88px);margin-top:clamp(32px,4vw,48px);align-items:start}
+.bignum{display:block;width:fit-content;max-width:100%;font-family:var(--display);font-weight:800;font-size:clamp(3rem,7.4vw,6rem);line-height:.95;letter-spacing:-.01em;
+  color:var(--tape);text-decoration:none;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bignum:hover{color:var(--tape-hi)}
+.c-label{display:block;font-size:15px;color:var(--on-panel-2);margin-bottom:8px}
+.c-block+.c-block{margin-top:32px;padding-top:28px;border-top:1px solid var(--panel-rule)}
+.mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.mail{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,3.6vw,2.8rem);line-height:1.05;text-decoration:none;overflow-wrap:anywhere}
+.mail:hover{text-decoration:underline;text-decoration-color:var(--tape);text-underline-offset:6px;text-decoration-thickness:3px}
+.copy{height:40px;padding:0 14px;border-radius:8px;border:2px solid var(--panel-rule);background:transparent;color:var(--on-panel-2);
+  font:600 15px var(--body);cursor:pointer;transition:border-color .15s,color .15s}
+.copy:hover{border-color:var(--on-panel-2);color:var(--on-panel)}
+.mob{font-family:var(--display);font-weight:600;font-size:26px;text-decoration:none}
+.c-card{background:var(--panel-2);border-radius:14px;padding:clamp(22px,3vw,32px)}
+.c-card h3{font-size:24px}
+.c-card table{width:100%;border-collapse:collapse;margin-top:12px;font-size:16px}
+.c-card td{padding:10px 0;border-bottom:1px solid var(--panel-rule);color:var(--on-panel-2)}
+.c-card td+td{text-align:right;color:var(--on-panel);font-variant-numeric:tabular-nums;font-weight:500}
+.c-card address{font-style:normal;margin-top:24px;color:var(--on-panel-2);line-height:1.6}
+.c-card address b{display:block;color:var(--on-panel);font-weight:600}
+@media(max-width:900px){.c-grid{grid-template-columns:1fr}}
+
+/* footer */
+.foot{background:var(--panel-deep);color:var(--on-panel-2);padding-block:56px 32px;font-size:15.5px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:40px}
+.foot .logo small{color:var(--on-panel-2)}
+.fgrid h4{font-family:var(--display);font-weight:600;font-size:19px;color:var(--on-panel);margin:0 0 14px}
+.fabout{margin-top:18px;max-width:320px}
+.flinks{display:grid;gap:8px}
+.flinks a,.fbot a,.imp a{text-decoration:none}
+.flinks a:hover,.fbot a:hover,.imp a:hover{color:var(--on-panel)}
+.imp{line-height:1.75}
+.imp b{color:var(--on-panel);font-weight:600}
+.fbot{margin-top:44px;padding-top:22px;border-top:1px solid var(--panel-rule);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14.5px}
+.fbot nav{display:flex;gap:22px}
+.draft{margin-top:12px;font-size:13.5px;opacity:.8}
+@media(max-width:960px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr;gap:28px}}
+
+/* sticky call bar on phones */
+.callbar{display:none}
+@media(max-width:760px){
+  .callbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:grid;grid-template-columns:1.25fr 1fr;gap:8px;
+    padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));
+    background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-top:1px solid var(--rule);transition:transform .3s ease}
+  .callbar .btn{min-height:52px;padding:0 12px;font-size:19px}
+  .callbar.away{transform:translateY(110%)}
+  .foot{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
+}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-b-arrow-right" viewBox="0 0 256 256"><path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"/></symbol><symbol id="i-b-arrow-up-right" viewBox="0 0 256 256"><path d="M204,64V168a12,12,0,0,1-24,0V93L72.49,200.49a12,12,0,0,1-17-17L163,76H88a12,12,0,0,1,0-24H192A12,12,0,0,1,204,64Z"/></symbol><symbol id="i-b-check" viewBox="0 0 256 256"><path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z"/></symbol><symbol id="i-b-list" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z"/></symbol><symbol id="i-b-x" viewBox="0 0 256 256"><path d="M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z"/></symbol><symbol id="i-battery-charging" viewBox="0 0 256 256"><path d="M216,80v96a16,16,0,0,1-16,16H32a16,16,0,0,1-16-16V80A16,16,0,0,1,32,64H200A16,16,0,0,1,216,80Z" opacity="0.2"/><path d="M200,56H32A24,24,0,0,0,8,80v96a24,24,0,0,0,24,24H200a24,24,0,0,0,24-24V80A24,24,0,0,0,200,56Zm8,120a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8Zm48-80v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM138.81,123.79a8,8,0,0,1,.35,7.79l-16,32a8,8,0,0,1-14.32-7.16L119.06,136H100a8,8,0,0,1-7.16-11.58l16-32a8,8,0,1,1,14.32,7.16L112.94,120H132A8,8,0,0,1,138.81,123.79Z"/></symbol><symbol id="i-broadcast" viewBox="0 0 256 256"><path d="M160,128a32,32,0,1,1-32-32A32,32,0,0,1,160,128Z" opacity="0.2"/><path d="M128,88a40,40,0,1,0,40,40A40,40,0,0,0,128,88Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,152Zm73.71,7.14a80,80,0,0,1-14.08,22.2,8,8,0,0,1-11.92-10.67,63.95,63.95,0,0,0,0-85.33,8,8,0,1,1,11.92-10.67,80.08,80.08,0,0,1,14.08,84.47ZM69,103.09a64,64,0,0,0,11.26,67.58,8,8,0,0,1-11.92,10.67,79.93,79.93,0,0,1,0-106.67A8,8,0,1,1,80.29,85.34,63.77,63.77,0,0,0,69,103.09ZM248,128a119.58,119.58,0,0,1-34.29,84,8,8,0,1,1-11.42-11.2,103.9,103.9,0,0,0,0-145.56A8,8,0,1,1,213.71,44,119.58,119.58,0,0,1,248,128ZM53.71,200.78A8,8,0,1,1,42.29,212a119.87,119.87,0,0,1,0-168,8,8,0,1,1,11.42,11.2,103.9,103.9,0,0,0,0,145.56Z"/></symbol><symbol id="i-buildings" viewBox="0 0 256 256"><path d="M136,32V216H40V85.35a8,8,0,0,1,3.56-6.66l80-53.33A8,8,0,0,1,136,32Z" opacity="0.2"/><path d="M240,208H224V96a16,16,0,0,0-16-16H144V32a16,16,0,0,0-24.88-13.32L39.12,72A16,16,0,0,0,32,85.34V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,96V208H144V96ZM48,85.34,128,32V208H48ZM112,112v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm-32,0v16a8,8,0,0,1-16,0V112a8,8,0,1,1,16,0Zm0,56v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Zm32,0v16a8,8,0,0,1-16,0V168a8,8,0,0,1,16,0Z"/></symbol><symbol id="i-calendar-check" viewBox="0 0 256 256"><path d="M216,48V88H40V48a8,8,0,0,1,8-8H208A8,8,0,0,1,216,48Z" opacity="0.2"/><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></symbol><symbol id="i-certificate" viewBox="0 0 256 256"><path d="M224,56V90.06h0a44,44,0,1,0-56,67.88h0V192H40a8,8,0,0,1-8-8V56a8,8,0,0,1,8-8H216A8,8,0,0,1,224,56Z" opacity="0.2"/><path d="M128,136a8,8,0,0,1-8,8H72a8,8,0,0,1,0-16h48A8,8,0,0,1,128,136Zm-8-40H72a8,8,0,0,0,0,16h48a8,8,0,0,0,0-16Zm112,65.47V224A8,8,0,0,1,220,231l-24-13.74L172,231A8,8,0,0,1,160,224V200H40a16,16,0,0,1-16-16V56A16,16,0,0,1,40,40H216a16,16,0,0,1,16,16V86.53a51.88,51.88,0,0,1,0,74.94ZM160,184V161.47A52,52,0,0,1,216,76V56H40V184Zm56-12a51.88,51.88,0,0,1-40,0v38.22l16-9.16a8,8,0,0,1,7.94,0l16,9.16Zm16-48a36,36,0,1,0-36,36A36,36,0,0,0,232,124Z"/></symbol><symbol id="i-chat-circle-text" viewBox="0 0 256 256"><path d="M224,128A96,96,0,0,1,79.93,211.11h0L42.54,223.58a8,8,0,0,1-10.12-10.12l12.47-37.39h0A96,96,0,1,1,224,128Z" opacity="0.2"/><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-4-1.08,7.85,7.85,0,0,0-2.53.42L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Zm40-104a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,144Z"/></symbol><symbol id="i-clipboard-text" viewBox="0 0 256 256"><path d="M208,48V216a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H96a39.83,39.83,0,0,0-8,24v8h80V64a39.83,39.83,0,0,0-8-24h40A8,8,0,0,1,208,48Z" opacity="0.2"/><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"/></symbol><symbol id="i-clock" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" opacity="0.2"/><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"/></symbol><symbol id="i-device-mobile" viewBox="0 0 256 256"><path d="M192,56V200H64V56Z" opacity="0.2"/><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"/></symbol><symbol id="i-envelope-simple" viewBox="0 0 256 256"><path d="M224,56l-96,88L32,56Z" opacity="0.2"/><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></symbol><symbol id="i-fan" viewBox="0 0 256 256"><path d="M136.5,150.45A52,52,0,1,1,33,155.13l71.91-20.54h0A24,24,0,0,0,128,152a23.75,23.75,0,0,0,8.5-1.56Zm-32.19-26.31h0a24,24,0,0,1,29.52-19.42h0L152,32.17a52,52,0,1,0-47.69,92ZM201,105.5a52,52,0,0,0-57.84,3.91h0a24,24,0,0,1,2.06,35.26h0l53.74,52a52,52,0,0,0,2-91.2Z" opacity="0.2"/><path d="M233,135a60,60,0,0,0-89.62-35.45l16.39-65.44a8,8,0,0,0-3.45-8.68A60,60,0,1,0,95.69,128.91L30.82,147.44a8,8,0,0,0-5.8,7.32,60,60,0,0,0,44.42,60.66,60.52,60.52,0,0,0,15.62,2.07,60.07,60.07,0,0,0,59.88-62l48.48,46.92a8,8,0,0,0,9.25,1.35A60,60,0,0,0,233,135Zm-121-7a16,16,0,1,1,16,16A16,16,0,0,1,112,128ZM80,76a44,44,0,0,1,62.75-39.82L127.77,96A32,32,0,0,0,99.85,112.8,43.85,43.85,0,0,1,80,76Zm27,119.57a44,44,0,0,1-65.86-34.43l59.31-16.94A32,32,0,0,0,128,160l.91,0A43.82,43.82,0,0,1,107,195.57Zm106.17-23a43.92,43.92,0,0,1-13,14.14l-44.32-42.89a31.91,31.91,0,0,0-.59-32.57,44,44,0,0,1,57.91,61.32Z"/></symbol><symbol id="i-fire" viewBox="0 0 256 256"><path d="M208,144a80,80,0,0,1-160,0c0-30.57,14.42-58.26,31-80l33,32,26.27-72C159.86,41.92,208,88.15,208,144Z" opacity="0.2"/><path d="M183.89,153.34a57.6,57.6,0,0,1-46.56,46.55A8.75,8.75,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68ZM216,144a88,88,0,0,1-176,0c0-27.92,11-56.47,32.66-84.85a8,8,0,0,1,11.93-.89l24.12,23.41,22-60.41a8,8,0,0,1,12.63-3.41C165.21,36,216,84.55,216,144Zm-16,0c0-46.09-35.79-85.92-58.21-106.33L119.52,98.74a8,8,0,0,1-13.09,3L80.06,76.16C64.09,99.21,56,122,56,144a72,72,0,0,0,144,0Z"/></symbol><symbol id="i-gauge" viewBox="0 0 256 256"><path d="M232,152v24a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V153.13C24,95.65,70.15,48.2,127.63,48A104,104,0,0,1,232,152Z" opacity="0.2"/><path d="M207.06,72.67A111.24,111.24,0,0,0,128,40h-.4C66.07,40.21,16,91,16,153.13V176a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V152A111.25,111.25,0,0,0,207.06,72.67ZM224,176H119.71l54.76-75.3a8,8,0,0,0-12.94-9.42L99.92,176H32V153.13c0-3.08.15-6.12.43-9.13H56a8,8,0,0,0,0-16H35.27c10.32-38.86,44-68.24,84.73-71.66V80a8,8,0,0,0,16,0V56.33A96.14,96.14,0,0,1,221,128H200a8,8,0,0,0,0,16h23.67c.21,2.65.33,5.31.33,8Z"/></symbol><symbol id="i-hard-hat" viewBox="0 0 256 256"><path d="M104,51.31V160H40V136A88,88,0,0,1,104,51.31Zm48,0V160h64V136A88,88,0,0,0,152,51.31Z" opacity="0.2"/><path d="M224,152V136a96.37,96.37,0,0,0-64-90.51V40a16,16,0,0,0-16-16H112A16,16,0,0,0,96,40v5.49A96.37,96.37,0,0,0,32,136v16a16,16,0,0,0-16,16v24a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V168A16,16,0,0,0,224,152Zm-16-16v16H160V62.67A80.36,80.36,0,0,1,208,136ZM144,40V152H112V40ZM48,136A80.36,80.36,0,0,1,96,62.67V152H48Zm176,56H32V168H224v24Z"/></symbol><symbol id="i-house-line" viewBox="0 0 256 256"><path d="M216,116.69V216H152V152H104v64H40V116.69l82.34-82.35a8,8,0,0,1,11.32,0Z" opacity="0.2"/><path d="M240,208H224V136l2.34,2.34A8,8,0,0,0,237.66,127L139.31,28.68a16,16,0,0,0-22.62,0L18.34,127a8,8,0,0,0,11.32,11.31L32,136v72H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM48,120l80-80,80,80v88H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48Zm96,88H112V160h32Z"/></symbol><symbol id="i-house" viewBox="0 0 256 256"><path d="M216,120v96H152V152H104v64H40V120a8,8,0,0,1,2.34-5.66l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,216,120Z" opacity="0.2"/><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></symbol><symbol id="i-identification-badge" viewBox="0 0 256 256"><path d="M200,32H56a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H200a8,8,0,0,0,8-8V40A8,8,0,0,0,200,32ZM128,168a32,32,0,1,1,32-32A32,32,0,0,1,128,168Z" opacity="0.2"/><path d="M75.19,198.4a8,8,0,0,0,11.21-1.6,52,52,0,0,1,83.2,0,8,8,0,1,0,12.8-9.6A67.88,67.88,0,0,0,155,165.51a40,40,0,1,0-53.94,0A67.88,67.88,0,0,0,73.6,187.2,8,8,0,0,0,75.19,198.4ZM128,112a24,24,0,1,1-24,24A24,24,0,0,1,128,112Zm72-88H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V40A16,16,0,0,0,200,24Zm0,192H56V40H200ZM88,64a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H96A8,8,0,0,1,88,64Z"/></symbol><symbol id="i-lightbulb" viewBox="0 0 256 256"><path d="M208,104a79.86,79.86,0,0,1-30.59,62.92A24.29,24.29,0,0,0,168,186v6a8,8,0,0,1-8,8H96a8,8,0,0,1-8-8v-6a24.11,24.11,0,0,0-9.3-19A79.87,79.87,0,0,1,48,104.45C47.76,61.09,82.72,25,126.07,24A80,80,0,0,1,208,104Z" opacity="0.2"/><path d="M176,232a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h80A8,8,0,0,1,176,232Zm40-128a87.55,87.55,0,0,1-33.64,69.21A16.24,16.24,0,0,0,176,186v6a16,16,0,0,1-16,16H96a16,16,0,0,1-16-16v-6a16,16,0,0,0-6.23-12.66A87.59,87.59,0,0,1,40,104.49C39.74,56.83,78.26,17.14,125.88,16A88,88,0,0,1,216,104Zm-16,0a72,72,0,0,0-73.74-72c-39,.92-70.47,33.39-70.26,72.39a71.65,71.65,0,0,0,27.64,56.3A32,32,0,0,1,96,186v6h64v-6a32.15,32.15,0,0,1,12.47-25.35A71.65,71.65,0,0,0,200,104Zm-16.11-9.34a57.6,57.6,0,0,0-46.56-46.55,8,8,0,0,0-2.66,15.78c16.57,2.79,30.63,16.85,33.44,33.45A8,8,0,0,0,176,104a9,9,0,0,0,1.35-.11A8,8,0,0,0,183.89,94.66Z"/></symbol><symbol id="i-lightning" viewBox="0 0 256 256"><path d="M96,240l16-80L48,136,160,16,144,96l64,24Z" opacity="0.2"/><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"/></symbol><symbol id="i-map-pin" viewBox="0 0 256 256"><path d="M128,24a80,80,0,0,0-80,80c0,72,80,128,80,128s80-56,80-128A80,80,0,0,0,128,24Zm0,112a32,32,0,1,1,32-32A32,32,0,0,1,128,136Z" opacity="0.2"/><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></symbol><symbol id="i-network" viewBox="0 0 256 256"><path d="M152,40V72a8,8,0,0,1-8,8H112a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h32A8,8,0,0,1,152,40ZM80,168H48a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8H80a8,8,0,0,0,8-8V176A8,8,0,0,0,80,168Zm128,0H176a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8h32a8,8,0,0,0,8-8V176A8,8,0,0,0,208,168Z" opacity="0.2"/><path d="M232,112H136V88h8a16,16,0,0,0,16-16V40a16,16,0,0,0-16-16H112A16,16,0,0,0,96,40V72a16,16,0,0,0,16,16h8v24H24a8,8,0,0,0,0,16H56v32H48a16,16,0,0,0-16,16v32a16,16,0,0,0,16,16H80a16,16,0,0,0,16-16V176a16,16,0,0,0-16-16H72V128H184v32h-8a16,16,0,0,0-16,16v32a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16V176a16,16,0,0,0-16-16h-8V128h32a8,8,0,0,0,0-16ZM112,40h32V72H112ZM80,208H48V176H80Zm128,0H176V176h32Z"/></symbol><symbol id="i-phone-call" viewBox="0 0 256 256"><path d="M215.94,182.08A48.33,48.33,0,0,1,168,224,136,136,0,0,1,32,88,48.33,48.33,0,0,1,73.92,40.06a8,8,0,0,1,8.3,4.8l21.13,47.2a8,8,0,0,1-.66,7.53L81.32,125a7.93,7.93,0,0,0-.54,7.81c8.27,16.93,25.77,34.22,42.75,42.41a7.92,7.92,0,0,0,7.83-.59l25-21.3a8,8,0,0,1,7.59-.69l47.16,21.13A8,8,0,0,1,215.94,182.08Z" opacity="0.2"/><path d="M144.27,45.93a8,8,0,0,1,9.8-5.66,86.22,86.22,0,0,1,61.66,61.66,8,8,0,0,1-5.66,9.8A8.23,8.23,0,0,1,208,112a8,8,0,0,1-7.73-5.94,70.35,70.35,0,0,0-50.33-50.33A8,8,0,0,1,144.27,45.93Zm-2.33,41.8c13.79,3.68,22.65,12.54,26.33,26.33A8,8,0,0,0,176,120a8.23,8.23,0,0,0,2.07-.27,8,8,0,0,0,5.66-9.8c-5.12-19.16-18.5-32.54-37.66-37.66a8,8,0,1,0-4.13,15.46Zm81.94,95.35A56.26,56.26,0,0,1,168,232C88.6,232,24,167.4,24,88A56.26,56.26,0,0,1,72.92,32.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,109.39,104c-.18.27-.37.52-.57.77L88,129.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,223.88,183.08Zm-15.88-2s-.07,0-.11,0h0l-47-21.05-24.35,20.71a8.44,8.44,0,0,1-.74.56,16,16,0,0,1-15.75,1.14c-18.73-9.05-37.4-27.58-46.46-46.11a16,16,0,0,1,1-15.7,6.13,6.13,0,0,1,.57-.77L96,95.15l-21-47a.61.61,0,0,1,0-.12A40.2,40.2,0,0,0,40,88,128.14,128.14,0,0,0,168,216,40.21,40.21,0,0,0,208,181.07Z"/></symbol><symbol id="i-phone" viewBox="0 0 256 256"><path d="M223.94,174.08A48.33,48.33,0,0,1,176,216,136,136,0,0,1,40,80,48.33,48.33,0,0,1,81.92,32.06a8,8,0,0,1,8.3,4.8l21.13,47.2a8,8,0,0,1-.66,7.53L89.32,117a7.93,7.93,0,0,0-.54,7.81c8.27,16.93,25.77,34.22,42.75,42.41a7.92,7.92,0,0,0,7.83-.59l25-21.3a8,8,0,0,1,7.59-.69l47.16,21.13A8,8,0,0,1,223.94,174.08Z" opacity="0.2"/><path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"/></symbol><symbol id="i-plugs-connected" viewBox="0 0 256 256"><path d="M185,127,127,185a24,24,0,0,1-33.94,0L71,162.91A24,24,0,0,1,71,129L129,71a24,24,0,0,1,33.94,0L185,93.09A24,24,0,0,1,185,127Z" opacity="0.2"/><path d="M237.66,18.34a8,8,0,0,0-11.32,0l-52.4,52.41-5.37-5.38a32.05,32.05,0,0,0-45.26,0L100,88.69l-6.34-6.35A8,8,0,0,0,82.34,93.66L88.69,100,65.37,123.31a32,32,0,0,0,0,45.26l5.38,5.37-52.41,52.4a8,8,0,0,0,11.32,11.32l52.4-52.41,5.37,5.38a32.06,32.06,0,0,0,45.26,0L156,167.31l6.34,6.35a8,8,0,0,0,11.32-11.32L167.31,156l23.32-23.31a32,32,0,0,0,0-45.26l-5.38-5.37,52.41-52.4A8,8,0,0,0,237.66,18.34Zm-116.29,161a16,16,0,0,1-22.62,0L76.69,157.25a16,16,0,0,1,0-22.62L100,111.31,144.69,156Zm57.94-57.94h0L156,144.69,111.31,100l23.32-23.31a16,16,0,0,1,22.62,0l22.06,22a16,16,0,0,1,0,22.63ZM88.57,35A8,8,0,0,1,103.43,29l8,20A8,8,0,0,1,96.57,55ZM24.57,93A8,8,0,0,1,35,88.57l20,8A8,8,0,0,1,49,111.43l-20-8A8,8,0,0,1,24.57,93ZM231.43,163a8,8,0,0,1-10.4,4.46l-20-8A8,8,0,1,1,207,144.57l20,8A8,8,0,0,1,231.43,163Zm-64,58.06A8,8,0,0,1,152.57,227l-8-20A8,8,0,0,1,159.43,201Z"/></symbol><symbol id="i-ruler" viewBox="0 0 256 256"><path d="M229.66,90.34,90.34,229.66a8,8,0,0,1-11.31,0L26.34,177a8,8,0,0,1,0-11.31L165.66,26.34a8,8,0,0,1,11.31,0L229.66,79A8,8,0,0,1,229.66,90.34Z" opacity="0.2"/><path d="M235.32,73.37,182.63,20.69a16,16,0,0,0-22.63,0L20.68,160a16,16,0,0,0,0,22.63l52.69,52.68a16,16,0,0,0,22.63,0L235.32,96A16,16,0,0,0,235.32,73.37ZM84.68,224,32,171.31l32-32,26.34,26.35a8,8,0,0,0,11.32-11.32L75.31,128,96,107.31l26.34,26.35a8,8,0,0,0,11.32-11.32L107.31,96,128,75.31l26.34,26.35a8,8,0,0,0,11.32-11.32L139.31,64l32-32L224,84.69Z"/></symbol><symbol id="i-seal-check" viewBox="0 0 256 256"><path d="M232,128c0,12.51-17.82,21.95-22.68,33.69-4.68,11.32,1.42,30.65-7.78,39.85s-28.53,3.1-39.85,7.78C150,214.18,140.5,232,128,232s-22-17.82-33.69-22.68c-11.32-4.68-30.65,1.42-39.85-7.78s-3.1-28.53-7.78-39.85C41.82,150,24,140.5,24,128s17.82-22,22.68-33.69C51.36,83,45.26,63.66,54.46,54.46S83,51.36,94.31,46.68C106.05,41.82,115.5,24,128,24S150,41.82,161.69,46.68c11.32,4.68,30.65-1.42,39.85,7.78s3.1,28.53,7.78,39.85C214.18,106.05,232,115.5,232,128Z" opacity="0.2"/><path d="M225.86,102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28,23.51,138.44,16,128,16s-18.27,7.51-25.18,14.14c-3.94,3.77-8,7.67-11.57,9.14C88,40.64,82.56,40.72,77.31,40.8c-9.76.15-20.82.31-28.51,8S41,67.55,40.8,77.31c-.08,5.25-.16,10.67-1.52,13.94-1.47,3.56-5.37,7.63-9.14,11.57C23.51,109.72,16,117.56,16,128s7.51,18.27,14.14,25.18c3.77,3.94,7.67,8,9.14,11.57,1.36,3.27,1.44,8.69,1.52,13.94.15,9.76.31,20.82,8,28.51s18.75,7.85,28.51,8c5.25.08,10.67.16,13.94,1.52,3.56,1.47,7.63,5.37,11.57,9.14C109.72,232.49,117.56,240,128,240s18.27-7.51,25.18-14.14c3.94-3.77,8-7.67,11.57-9.14,3.27-1.36,8.69-1.44,13.94-1.52,9.76-.15,20.82-.31,28.51-8s7.85-18.75,8-28.51c.08-5.25.16-10.67,1.52-13.94,1.47-3.56,5.37-7.63,9.14-11.57C232.49,146.28,240,138.44,240,128S232.49,109.73,225.86,102.82Zm-11.55,39.29c-4.79,5-9.75,10.17-12.38,16.52-2.52,6.1-2.63,13.07-2.73,19.82-.1,7-.21,14.33-3.32,17.43s-10.39,3.22-17.43,3.32c-6.75.1-13.72.21-19.82,2.73-6.35,2.63-11.52,7.59-16.52,12.38S132,224,128,224s-9.15-4.92-14.11-9.69-10.17-9.75-16.52-12.38c-6.1-2.52-13.07-2.63-19.82-2.73-7-.1-14.33-.21-17.43-3.32s-3.22-10.39-3.32-17.43c-.1-6.75-.21-13.72-2.73-19.82-2.63-6.35-7.59-11.52-12.38-16.52S32,132,32,128s4.92-9.15,9.69-14.11,9.75-10.17,12.38-16.52c2.52-6.1,2.63-13.07,2.73-19.82.1-7,.21-14.33,3.32-17.43S70.51,56.9,77.55,56.8c6.75-.1,13.72-.21,19.82-2.73,6.35-2.63,11.52-7.59,16.52-12.38S124,32,128,32s9.15,4.92,14.11,9.69,10.17,9.75,16.52,12.38c6.1,2.52,13.07,2.63,19.82,2.73,7,.1,14.33.21,17.43,3.32s3.22,10.39,3.32,17.43c.1,6.75.21,13.72,2.73,19.82,2.63,6.35,7.59,11.52,12.38,16.52S224,124,224,128,219.08,137.15,214.31,142.11ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"/></symbol><symbol id="i-shield-check" viewBox="0 0 256 256"><path d="M216,56v56c0,96-88,120-88,120S40,208,40,112V56a8,8,0,0,1,8-8H208A8,8,0,0,1,216,56Z" opacity="0.2"/><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></symbol><symbol id="i-siren" viewBox="0 0 256 256"><path d="M208,129v39H48V128a80,80,0,0,1,80.61-80C172.72,48.33,208,84.89,208,129Z" opacity="0.2"/><path d="M120,16V8a8,8,0,0,1,16,0v8a8,8,0,0,1-16,0Zm80,32a8,8,0,0,0,5.66-2.34l8-8a8,8,0,0,0-11.32-11.32l-8,8A8,8,0,0,0,200,48ZM50.34,45.66A8,8,0,0,0,61.66,34.34l-8-8A8,8,0,0,0,42.34,37.66Zm87,26.45a8,8,0,1,0-2.64,15.78C153.67,91.08,168,108.32,168,128a8,8,0,0,0,16,0C184,100.6,163.93,76.57,137.32,72.11ZM232,176v24a16,16,0,0,1-16,16H40a16,16,0,0,1-16-16V176a16,16,0,0,1,16-16V128a88,88,0,0,1,88-88h.68c48.15.36,87.33,40.29,87.33,89v31A16,16,0,0,1,232,176ZM56,160H200V129c0-40-32.05-72.71-71.45-73H128a72,72,0,0,0-72,72Zm160,40V176H40v24H216Z"/></symbol><symbol id="i-solar-panel" viewBox="0 0 256 256"><path d="M232,216H24l40.7-72H191.3Z" opacity="0.2"/><path d="M32,104a8,8,0,0,1,8-8H56a8,8,0,0,1,0,16H40A8,8,0,0,1,32,104ZM71.43,58.75A8,8,0,0,0,82.75,47.43L71.43,36.12A8,8,0,0,0,60.12,47.43ZM128,40a8,8,0,0,0,8-8V16a8,8,0,0,0-16,0V32A8,8,0,0,0,128,40Zm50.91,21.09a8,8,0,0,0,5.66-2.34l11.31-11.32a8,8,0,0,0-11.31-11.31L173.25,47.43a8,8,0,0,0,5.66,13.66ZM192,104a8,8,0,0,0,8,8h16a8,8,0,0,0,0-16H200A8,8,0,0,0,192,104ZM88,112a8,8,0,0,0,8-8,32,32,0,0,1,64,0,8,8,0,0,0,16,0,48,48,0,0,0-96,0A8,8,0,0,0,88,112ZM238.91,220a8,8,0,0,1-6.91,4H24a8,8,0,0,1-7-11.94l40.69-72a8,8,0,0,1,7-4.06H191.3a8,8,0,0,1,7,4.06l40.69,72A8,8,0,0,1,238.91,220Zm-52.27-68H162.27l3.48,16h29.93Zm-37.26,16-3.48-16H110.1l-3.48,16Zm-46.24,16-5.21,24h60.14l-5.21-24ZM60.32,168H90.25l3.48-16H69.36ZM37.71,208H81.55l5.22-24H51.28Zm180.58,0-13.57-24H169.23l5.22,24Z"/></symbol><symbol id="i-solar-roof" viewBox="0 0 256 256"><path d="M240,128H96L56,48H200Z" opacity="0.2"/><path d="M247.16,124.42l-40-80A8,8,0,0,0,200,40H56a8,8,0,0,0-7.16,4.42l-40,80A8.08,8.08,0,0,0,8,128v56a16,16,0,0,0,16,16H232a16,16,0,0,0,16-16V128A8.08,8.08,0,0,0,247.16,124.42ZM99.06,56l12,24H80.94l-12-24Zm48,0,12,24H128.94l-12-24Zm-46.12,64-12-24h30.12l12,24Zm48,0-12-24h30.12l12,24Zm48,0-12-24h30.12l12,24Zm10.12-40H176.94l-12-24h30.12ZM24,129.89l32-64,32,64V184H24ZM104,184V136H232v48Z"/></symbol><symbol id="i-sun" viewBox="0 0 256 256"><path d="M184,128a56,56,0,1,1-56-56A56,56,0,0,1,184,128Z" opacity="0.2"/><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></symbol><symbol id="i-television-simple" viewBox="0 0 256 256"><path d="M224,80V200a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V80a8,8,0,0,1,8-8H216A8,8,0,0,1,224,80Z" opacity="0.2"/><path d="M216,64H147.31l34.35-34.34a8,8,0,1,0-11.32-11.32L128,60.69,85.66,18.34A8,8,0,0,0,74.34,29.66L108.69,64H40A16,16,0,0,0,24,80V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V80A16,16,0,0,0,216,64Zm0,136H40V80H216V200Z"/></symbol><symbol id="i-user-circle-gear" viewBox="0 0 256 256"><path d="M224,128a95.76,95.76,0,0,1-31.8,71.37A72,72,0,0,0,128,160a40,40,0,1,0-40-40,40,40,0,0,0,40,40,72,72,0,0,0-64.2,39.37h0A96,96,0,0,1,184.92,50.69a16,16,0,0,0,20.39,20.39A95.61,95.61,0,0,1,224,128Z" opacity="0.2"/><path d="M228.25,63.07l-4.66-2.69a23.6,23.6,0,0,0,0-8.76l4.66-2.69a8,8,0,0,0-8-13.86l-4.67,2.7A23.92,23.92,0,0,0,208,33.38V28a8,8,0,0,0-16,0v5.38a23.92,23.92,0,0,0-7.58,4.39l-4.67-2.7a8,8,0,1,0-8,13.86l4.66,2.69a23.6,23.6,0,0,0,0,8.76l-4.66,2.69a8,8,0,0,0,4,14.93,7.92,7.92,0,0,0,4-1.07l4.67-2.7A23.92,23.92,0,0,0,192,78.62V84a8,8,0,0,0,16,0V78.62a23.92,23.92,0,0,0,7.58-4.39l4.67,2.7a7.92,7.92,0,0,0,4,1.07,8,8,0,0,0,4-14.93ZM192,56a8,8,0,1,1,8,8A8,8,0,0,1,192,56Zm29.35,48.11a8,8,0,0,0-6.57,9.21A88.85,88.85,0,0,1,216,128a87.62,87.62,0,0,1-22.24,58.41,79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75A88,88,0,0,1,128,40a88.76,88.76,0,0,1,14.68,1.22,8,8,0,0,0,2.64-15.78,103.92,103.92,0,1,0,85.24,85.24A8,8,0,0,0,221.35,104.11ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0Z"/></symbol><symbol id="i-wrench" viewBox="0 0 256 256"><path d="M224,96a64,64,0,0,1-94.94,56L73,217A24,24,0,0,1,39,183L104,126.94a64,64,0,0,1,80-90.29L144,80l5.66,26.34L176,112l43.35-40A63.8,63.8,0,0,1,224,96Z" opacity="0.2"/><path d="M226.76,69a8,8,0,0,0-12.84-2.88l-40.3,37.19-17.23-3.7-3.7-17.23,37.19-40.3A8,8,0,0,0,187,29.24,72,72,0,0,0,88,96,72.34,72.34,0,0,0,94,124.94L33.79,177c-.15.12-.29.26-.43.39a32,32,0,0,0,45.26,45.26c.13-.13.27-.28.39-.42L131.06,162A72,72,0,0,0,232,96,71.56,71.56,0,0,0,226.76,69ZM160,152a56.14,56.14,0,0,1-27.07-7,8,8,0,0,0-9.92,1.77L67.11,211.51a16,16,0,0,1-22.62-22.62L109.18,133a8,8,0,0,0,1.77-9.93,56,56,0,0,1,58.36-82.31l-31.2,33.81a8,8,0,0,0-1.94,7.1L141.83,108a8,8,0,0,0,6.14,6.14l26.35,5.66a8,8,0,0,0,7.1-1.94l33.81-31.2A56.06,56.06,0,0,1,160,152Z"/></symbol></svg>
+
+<div lang="de">
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="#start" aria-label="Elektro Andrade, zum Seitenanfang">
+      <span class="tape">Elektro Andrade</span><small>Meisterbetrieb<br>in Heilbronn</small>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ueber">Über uns</a>
+      <a href="#photovoltaik">Photovoltaik</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#echeck">E-Check</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="h-right">
+      <a class="h-mail" href="mailto:elektroandrade@aol.com" aria-label="E-Mail an elektroandrade@aol.com"><svg class="i"><use href="#i-envelope-simple"/></svg></a>
+      <a class="btn btn-main btn-sm" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg><span class="num">07131 12011301</span><span class="short">Anrufen</span></a>
+      <button class="burger" id="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mnav"><svg class="i"><use href="#i-b-list"/></svg></button>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile Navigation">
+    <div class="wrap">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ueber">Über uns</a>
+      <a href="#photovoltaik">Photovoltaik</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#echeck">E-Check</a>
+      <a href="#kontakt">Kontakt</a>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a>
+        <a class="btn btn-ghost" href="mailto:elektroandrade@aol.com"><svg class="i"><use href="#i-envelope-simple"/></svg>E-Mail schreiben</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="start">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="status" data-status><span class="dot"></span><span class="st-txt">Bürozeiten Mo–Fr 16–18 Uhr</span></p>
+        <h1>Sauber verdrahtet. Geprüft übergeben.</h1>
+        <p class="lead">Ihr Elektromeisterbetrieb in Heilbronn für Elektroinstallation, Photovoltaik, Sat- und Sicherheitstechnik. Für Privat- und Gewerbekunden, gemessen und dokumentiert nach DIN VDE 0100.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a>
+          <a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20an%20Elektro%20Andrade"><svg class="i"><use href="#i-envelope-simple"/></svg>E-Mail schreiben</a>
+        </div>
+        <p class="cta-hint">Unterwegs erreichbar: <b>0163 7727290</b></p>
+      </div>
+      <figure class="hero-fig">
+        <img src="assets/hero-panel.jpg" alt="Unterverteilung mit Überspannungsschutz, Leitungsschutzschaltern und gelber Beschriftung" fetchpriority="high">
+        <figcaption><span class="tape">-F1.0</span>Jeder Stromkreis beschriftet.</figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <ul class="creds">
+        <li><svg class="i"><use href="#i-hard-hat"/></svg><div><b>Meisterbetrieb</b><span>Planung und Ausführung aus einer Hand</span></div></li>
+        <li><svg class="i"><use href="#i-seal-check"/></svg><div><b>E-Check Fachbetrieb</b><span>Geprüfte Anlagensicherheit</span></div></li>
+        <li><svg class="i"><use href="#i-certificate"/></svg><div><b>DIN VDE 0100</b><span>Mit Mess- und Prüfprotokoll</span></div></li>
+        <li><svg class="i"><use href="#i-buildings"/></svg><div><b>Privat und Gewerbe</b><span>Wohnung, Haus und Betrieb</span></div></li>
+      </ul>
+    </div>
+    <div class="wires" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+
+  <!-- LEISTUNGEN: interactive distribution board -->
+  <section class="sec" id="leistungen">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Ein Betrieb für Ihre gesamte Elektrotechnik.</h2>
+        <p>Acht Bereiche, ein Ansprechpartner, der plant, installiert und prüft. Legen Sie einen Schalter um, um den Bereich zu sehen.</p>
+      </div>
+
+      <div class="cab" id="cab">
+        <div class="cab-head"><b>Unterverteilung UV1</b><span>Leistungen von Elektro Andrade</span></div>
+        <div class="rail" role="tablist" aria-label="Leistungsbereiche">
+          <button class="mcb" role="tab" id="t1" aria-controls="p1" aria-selected="true"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F1</span><span class="mcb-name">Elektro&shy;installation</span></button>
+          <button class="mcb" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F2</span><span class="mcb-name">Photo&shy;voltaik</span></button>
+          <button class="mcb" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F3</span><span class="mcb-name">Sat und Empfang</span></button>
+          <button class="mcb" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F4</span><span class="mcb-name">Sicher&shy;heit</span></button>
+          <button class="mcb" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F5</span><span class="mcb-name">Netzwerk</span></button>
+          <button class="mcb" role="tab" id="t6" aria-controls="p6" aria-selected="false" tabindex="-1"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F6</span><span class="mcb-name">Komfort und Klima</span></button>
+          <button class="mcb" role="tab" id="t7" aria-controls="p7" aria-selected="false" tabindex="-1"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F7</span><span class="mcb-name">Brand&shy;schutz</span></button>
+          <button class="mcb" role="tab" id="t8" aria-controls="p8" aria-selected="false" tabindex="-1"><span class="mcb-body"><span class="slot"><span class="lever"></span></span><span class="led"></span></span><span class="tape">-F8</span><span class="mcb-name">E-Check</span></button>
+        </div>
+      </div>
+
+      <article class="pane" role="tabpanel" id="p1" aria-labelledby="t1">
+        <div><h3><span class="tape">-F1</span>Elektroinstallation</h3>
+          <p>Neuinstallation, Erweiterung und Sanierung für Wohnungen, Häuser und Gewerbe. Von der Planung bis zur beschrifteten Verteilung, normgerecht nach DIN VDE 0100.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Elektroinstallation"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>Neubau und Altbausanierung</li><li><svg class="i"><use href="#i-b-check"/></svg>Zählerschränke nach TAB</li><li><svg class="i"><use href="#i-b-check"/></svg>Unter- und Stromverteiler</li><li><svg class="i"><use href="#i-b-check"/></svg>Beleuchtungstechnik</li><li><svg class="i"><use href="#i-b-check"/></svg>Fehlersuche und Reparatur</li></ul>
+      </article>
+      <article class="pane" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <div><h3><span class="tape">-F2</span>Photovoltaik</h3>
+          <p>Planung, Montage und Anschluss Ihrer PV-Anlage auf Flach- oder Schrägdach, auf Wunsch mit Stromspeicher für mehr Eigenverbrauch.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Photovoltaik"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>Flach- und Schrägdach</li><li><svg class="i"><use href="#i-b-check"/></svg>Wechselrichter und Speicher</li><li><svg class="i"><use href="#i-b-check"/></svg>Speicher-Nachrüstung</li><li><svg class="i"><use href="#i-b-check"/></svg>Anmeldung beim Netzbetreiber</li><li><svg class="i"><use href="#i-b-check"/></svg>Inbetriebnahme und Einweisung</li></ul>
+      </article>
+      <article class="pane" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <div><h3><span class="tape">-F3</span>Sat- und Empfangstechnik</h3>
+          <p>Sat-, Kabel- und DVB-T2-Empfang, sauber auf jeden Raum verteilt. Auch für Mehrfamilienhäuser mit vielen Teilnehmern.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Sat-%20und%20Empfangstechnik"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>Sat-Antennen und LNB</li><li><svg class="i"><use href="#i-b-check"/></svg>Multischalter</li><li><svg class="i"><use href="#i-b-check"/></svg>DiSEqC-Steuerung</li><li><svg class="i"><use href="#i-b-check"/></svg>Kabel-TV und DVB-T2</li></ul>
+      </article>
+      <article class="pane" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+        <div><h3><span class="tape">-F4</span>Sicherheitstechnik</h3>
+          <p>Alarm- und Einbruchmeldeanlagen, Rauchwarnmelder sowie Sprech- und Videoanlagen für Haus und Betrieb.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Sicherheitstechnik"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>Einbruchmeldetechnik</li><li><svg class="i"><use href="#i-b-check"/></svg>Rauchwarnmelder</li><li><svg class="i"><use href="#i-b-check"/></svg>Sprech- und Videoanlagen</li><li><svg class="i"><use href="#i-b-check"/></svg>Elektronische Türschlösser</li></ul>
+      </article>
+      <article class="pane" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+        <div><h3><span class="tape">-F5</span>Netzwerk und Kommunikation</h3>
+          <p>EDV-Netzwerke, Telefonanlagen und Internetanschlüsse für Büro und Zuhause, strukturiert verkabelt und dokumentiert.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Netzwerk"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>Netzwerkverkabelung</li><li><svg class="i"><use href="#i-b-check"/></svg>Telefonanlagen</li><li><svg class="i"><use href="#i-b-check"/></svg>DSL und Internet</li></ul>
+      </article>
+      <article class="pane" role="tabpanel" id="p6" aria-labelledby="t6" hidden>
+        <div><h3><span class="tape">-F6</span>Komfort und Klima</h3>
+          <p>Elektrische Rollläden und Klimaanlagen für Privathaushalte und kleinere Gewerbe, inklusive Anschluss und Steuerung.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Komfort%20und%20Klima"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>Rollladenantriebe</li><li><svg class="i"><use href="#i-b-check"/></svg>Vorbauelemente</li><li><svg class="i"><use href="#i-b-check"/></svg>Klimaanlagen</li></ul>
+      </article>
+      <article class="pane" role="tabpanel" id="p7" aria-labelledby="t7" hidden>
+        <div><h3><span class="tape">-F7</span>Brandschutz</h3>
+          <p>Fachgerechte Abschottung von Kabel- und Leitungsdurchführungen, geprüft und für Ihre Unterlagen dokumentiert.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Brandschutz"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>Kabelabschottung</li><li><svg class="i"><use href="#i-b-check"/></svg>Leitungsdurchführungen</li><li><svg class="i"><use href="#i-b-check"/></svg>Kennzeichnung und Dokumentation</li></ul>
+      </article>
+      <article class="pane" role="tabpanel" id="p8" aria-labelledby="t8" hidden>
+        <div><h3><span class="tape">-F8</span>E-Check und Prüfung</h3>
+          <p>Messung und Prüfung Ihrer Anlage mit Protokoll, für Eigentümer, Vermieter und Betriebe.</p>
+          <div class="cta-row"><a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a><a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20E-Check"><svg class="i"><use href="#i-envelope-simple"/></svg>Per E-Mail anfragen</a></div></div>
+        <ul class="checks"><li><svg class="i"><use href="#i-b-check"/></svg>E-Check Privat</li><li><svg class="i"><use href="#i-b-check"/></svg>Prüfung nach DGUV Vorschrift 3</li><li><svg class="i"><use href="#i-b-check"/></svg>Prüfprotokoll und Plakette</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ÜBER UNS -->
+  <section class="sec s2" id="ueber">
+    <div class="wrap about">
+      <figure class="about-fig">
+        <img src="assets/work.jpg" alt="Elektriker mit Schutzhelm prüft einen Schaltkasten" loading="lazy">
+        <figcaption>Fehlersuche vor Ort</figcaption>
+      </figure>
+      <div>
+        <h2>Sicherheit geht vor.</h2>
+        <p class="quote">Gehen Sie auf Nummer sicher, wenn es um Ihre Angestellten, Mieter, Gebäude und Sie selbst geht.</p>
+        <p class="about-txt">Elektro Andrade ist Ihr Elektro-Dienstleister in Heilbronn. Wir betreuen Privat- und Geschäftskunden von der Planung über die Installation bis zur Wartung und Fehlersuche. Am Ende soll alles sicher funktionieren und sauber dokumentiert sein.</p>
+        <p class="owner"><b>Joaquim Amaro Andrade</b>, Inhaber</p>
+        <dl class="points">
+          <div><dt><svg class="i"><use href="#i-ruler"/></svg>Planung vom Meister</dt><dd>Durchdachte Lösungen statt Provisorien, die auch in Jahren noch passen.</dd></div>
+          <div><dt><svg class="i"><use href="#i-clipboard-text"/></svg>Saubere Dokumentation</dt><dd>Prüfprotokolle, Pläne und eine beschriftete Verteilung.</dd></div>
+          <div><dt><svg class="i"><use href="#i-chat-circle-text"/></svg>Ein Ansprechpartner</dt><dd>Vom ersten Gespräch bis zur Abnahme sprechen Sie mit dem Betrieb, der ausführt.</dd></div>
+          <div><dt><svg class="i"><use href="#i-map-pin"/></svg>Kurze Wege</dt><dd>Ansässig in der Sontheimer Straße, schnell vor Ort in Heilbronn und Umgebung.</dd></div>
+        </dl>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a>
+          <a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20an%20Elektro%20Andrade"><svg class="i"><use href="#i-envelope-simple"/></svg>E-Mail schreiben</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOVOLTAIK -->
+  <section class="sec" id="photovoltaik">
+    <div class="wrap pv">
+      <div class="pv-body">
+        <h2>Eigener Strom vom eigenen Dach.</h2>
+        <p>Mit einer PV-Anlage erzeugen Sie Ihren Strom selbst und machen sich unabhängiger von steigenden Preisen. Wir übernehmen alles vom ersten Aufmaß bis zur Anmeldung.</p>
+        <dl class="spec">
+          <div><dt>Planung</dt><dd>Auslegung nach Dachfläche, Ausrichtung und Verbrauch</dd></div>
+          <div><dt>Montage</dt><dd>Module, Wechselrichter und Stromspeicher</dd></div>
+          <div><dt>Anschluss</dt><dd>Zählerschrank nach aktueller TAB des Netzbetreibers</dd></div>
+          <div><dt>Anmeldung</dt><dd>Netzbetreiber und Marktstammdatenregister</dd></div>
+          <div><dt>Nachrüstung</dt><dd>Speicher auch für bestehende Anlagen</dd></div>
+        </dl>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a>
+          <a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20Photovoltaik"><svg class="i"><use href="#i-envelope-simple"/></svg>PV per E-Mail anfragen</a>
+        </div>
+      </div>
+      <figure class="pv-fig">
+        <img src="assets/montage.jpg" alt="Zwei Monteure verkabeln ein Solarmodul auf dem Dach" loading="lazy">
+        <span class="tape">0 % MwSt.</span>
+        <figcaption>Für PV-Anlagen auf Wohngebäuden bis 30 kWp fällt keine Umsatzsteuer an (§ 12 Abs. 3 UStG).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section class="sec s2" id="ablauf">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>So läuft Ihr Auftrag ab.</h2>
+        <p>Klare Schritte und ein schriftliches Angebot, bevor die Arbeit beginnt.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><span class="term">1</span><h3>Anruf oder E-Mail</h3><p>Sie schildern kurz Ihr Anliegen. Wir klären die Eckdaten und vereinbaren einen Termin.</p></li>
+        <li class="step"><span class="term">2</span><h3>Besichtigung und Angebot</h3><p>Termin vor Ort, Aufnahme der Anlage und ein transparentes, schriftliches Angebot.</p></li>
+        <li class="step"><span class="term">3</span><h3>Ausführung</h3><p>Installation durch den Meisterbetrieb. Termintreu und sauber, inklusive Aufräumen.</p></li>
+        <li class="step"><span class="term">4</span><h3>Prüfung und Übergabe</h3><p>Messung und Prüfprotokoll nach DIN VDE 0100-600, danach Einweisung und Übergabe.</p></li>
+      </ol>
+      <div class="ablauf-cta">
+        <p>Schritt 1 dauert nur ein paar Minuten.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a>
+          <a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20an%20Elektro%20Andrade"><svg class="i"><use href="#i-envelope-simple"/></svg>E-Mail schreiben</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-CHECK -->
+  <section class="echeck" id="echeck" aria-labelledby="ec-h">
+    <div class="wrap ec">
+      <svg class="sticker" viewBox="0 0 200 200" role="img" aria-label="E-Check Prüfplakette">
+        <circle class="st-bg" cx="100" cy="100" r="96"/>
+        <circle class="st-line" cx="100" cy="100" r="64"/>
+        <g font-size="15" font-weight="600" text-anchor="middle">
+          <text x="100" y="29">12</text><text x="100" y="29" transform="rotate(30 100 100)">1</text><text x="100" y="29" transform="rotate(60 100 100)">2</text>
+          <text x="100" y="29" transform="rotate(90 100 100)">3</text><text x="100" y="29" transform="rotate(120 100 100)">4</text><text x="100" y="29" transform="rotate(150 100 100)">5</text>
+          <text x="100" y="29" transform="rotate(180 100 100)">6</text><text x="100" y="29" transform="rotate(210 100 100)">7</text><text x="100" y="29" transform="rotate(240 100 100)">8</text>
+          <text x="100" y="29" transform="rotate(270 100 100)">9</text><text x="100" y="29" transform="rotate(300 100 100)">10</text><text x="100" y="29" transform="rotate(330 100 100)">11</text>
+        </g>
+        <circle class="st-hole" cx="100" cy="23" r="5" transform="rotate(315 100 100)"/>
+        <text x="100" y="98" text-anchor="middle" font-size="30" font-weight="800">E-CHECK</text>
+        <text x="100" y="122" text-anchor="middle" font-size="15" font-weight="600">geprüft</text>
+      </svg>
+      <div>
+        <h2 id="ec-h">Wann wurde Ihre Anlage zuletzt geprüft?</h2>
+        <p>Für Wohnungen und Häuser wird der E-Check alle vier Jahre empfohlen. Für Betriebe ist die wiederkehrende Prüfung nach DGUV Vorschrift 3 Pflicht. Wir messen, prüfen und dokumentieren.</p>
+        <div class="cta-row">
+          <a class="btn btn-tape" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a>
+          <a class="btn btn-line" href="mailto:elektroandrade@aol.com?subject=Termin%20E-Check"><svg class="i"><use href="#i-envelope-simple"/></svg>E-Check per E-Mail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EINBLICKE -->
+  <section class="sec" id="einblicke">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Aus unserer Arbeit.</h2>
+        <p>Verteilung, Photovoltaik, Licht und Komfort: Bereiche, in denen wir in Heilbronn und Umgebung arbeiten.</p>
+      </div>
+      <div class="gal">
+        <figure class="w2"><img src="assets/install.jpg" alt="Unterverteilung mit Leitungsschutzschaltern" loading="lazy"><figcaption>Unterverteilung mit Überspannungsschutz<span>Elektroinstallation</span></figcaption></figure>
+        <figure><img src="assets/montage.jpg" alt="Montage eines Solarmoduls" loading="lazy"><figcaption>Modulmontage<span>Photovoltaik</span></figcaption></figure>
+        <figure><img src="assets/smart.jpg" alt="Elektronisches Türschloss mit Smartphone-Steuerung" loading="lazy"><figcaption>Elektronisches Türschloss<span>Sicherheitstechnik</span></figcaption></figure>
+        <figure><img src="assets/light.jpg" alt="Hängeleuchte vor petrolfarbener Wand" loading="lazy"><figcaption>Leuchtenmontage<span>Beleuchtung</span></figcaption></figure>
+        <figure><img src="assets/hero.jpg" alt="Reihen von Photovoltaik-Modulen unter Wolkenhimmel" loading="lazy"><figcaption>Freiflächenanlage<span>Photovoltaik</span></figcaption></figure>
+        <figure class="w2"><img src="assets/kitchen.jpg" alt="Pendelleuchten über einer Küchentheke" loading="lazy"><figcaption>Pendelleuchten über der Kücheninsel<span>Beleuchtung</span></figcaption></figure>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>07131 12011301</a>
+        <a class="btn btn-ghost" href="mailto:elektroandrade@aol.com?subject=Anfrage%20an%20Elektro%20Andrade"><svg class="i"><use href="#i-envelope-simple"/></svg>E-Mail schreiben</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <p class="status" data-status><span class="dot"></span><span class="st-txt">Bürozeiten Mo–Fr 16–18 Uhr</span></p>
+      <h2>Rufen Sie an oder schreiben Sie uns.</h2>
+      <div class="c-grid">
+        <div>
+          <div class="c-block">
+            <span class="c-label">Telefon Büro</span>
+            <a class="bignum" href="tel:+49713112011301">07131 12011301</a>
+          </div>
+          <div class="c-block">
+            <span class="c-label">E-Mail</span>
+            <div class="mailrow">
+              <a class="mail" id="mailaddr" href="mailto:elektroandrade@aol.com?subject=Anfrage%20an%20Elektro%20Andrade">elektroandrade@aol.com</a>
+              <button class="copy" type="button" data-copy="elektroandrade@aol.com">Adresse kopieren</button>
+            </div>
+          </div>
+          <div class="c-block">
+            <span class="c-label">Mobil, auch unterwegs</span>
+            <a class="mob" href="tel:+491637727290">0163 7727290</a>
+          </div>
+        </div>
+        <div class="c-card">
+          <h3>Bürozeiten</h3>
+          <table>
+            <tr><td>Montag bis Freitag</td><td>16:00 – 18:00</td></tr>
+            <tr><td>Samstag und Sonntag</td><td>geschlossen</td></tr>
+            <tr><td>Termine vor Ort</td><td>nach Vereinbarung</td></tr>
+          </table>
+          <address><b>Elektro Andrade</b>Sontheimer Str. 54<br>74074 Heilbronn</address>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="impressum">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo" href="#start"><span class="tape">Elektro Andrade</span></a>
+        <p class="fabout">Elektroinstallation, Photovoltaik, Sat-, Sicherheits- und Netzwerktechnik für Privat- und Gewerbekunden in Heilbronn und Umgebung.</p>
+      </div>
+      <div>
+        <h4>Leistungen</h4>
+        <nav class="flinks" aria-label="Leistungen">
+          <a href="#leistungen">Elektroinstallation</a>
+          <a href="#photovoltaik">Photovoltaik</a>
+          <a href="#leistungen">Sat- und Sicherheitstechnik</a>
+          <a href="#echeck">E-Check und Prüfung</a>
+        </nav>
+      </div>
+      <div>
+        <h4>Betrieb</h4>
+        <nav class="flinks" aria-label="Betrieb">
+          <a href="#ueber">Über uns</a>
+          <a href="#ablauf">Ablauf</a>
+          <a href="#einblicke">Einblicke</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+      <div>
+        <h4>Impressum</h4>
+        <p class="imp"><b>Elektro Andrade</b><br>Inhaber: Joaquim Amaro Andrade<br>Sontheimer Str. 54, 74074 Heilbronn<br>Tel. <a href="tel:+49713112011301">07131 12011301</a>, Fax 07131 1376895<br>Mobil <a href="tel:+491637727290">0163 7727290</a><br><a href="mailto:elektroandrade@aol.com">elektroandrade@aol.com</a></p>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© <span id="yr">2026</span> Elektro Andrade, Heilbronn</span>
+      <nav aria-label="Rechtliches"><a href="#impressum">Impressum</a><a href="#impressum">Datenschutz</a></nav>
+    </div>
+    <p class="draft">Prototyp. Fotos sind Platzhalter. Datenschutzerklärung und Angaben zur Handwerkskammer folgen.</p>
+  </div>
+</footer>
+
+<div class="callbar" id="callbar">
+  <a class="btn btn-tape" href="tel:+49713112011301"><svg class="i"><use href="#i-phone"/></svg>Anrufen</a>
+  <a class="btn btn-main" href="mailto:elektroandrade@aol.com?subject=Anfrage%20an%20Elektro%20Andrade"><svg class="i"><use href="#i-envelope-simple"/></svg>E-Mail</a>
+</div>
+</div>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // mobile menu
+  var burger = document.getElementById('burger'), mnav = document.getElementById('mnav');
+  function setMenu(open){
+    mnav.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    burger.querySelector('use').setAttribute('href', open ? '#i-b-x' : '#i-b-list');
+  }
+  burger.addEventListener('click', function(){ setMenu(!mnav.classList.contains('open')); });
+  mnav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+
+  // live office status (Europe/Berlin, Mo–Fr 16:00–18:00)
+  try {
+    var parts = {};
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+      .formatToParts(new Date()).forEach(function(p){ parts[p.type] = p.value; });
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], d = days.indexOf(parts.weekday);
+    var mins = (+parts.hour) * 60 + (+parts.minute), workday = d >= 1 && d <= 5;
+    var open = workday && mins >= 960 && mins < 1080, txt;
+    if (open) txt = 'Büro jetzt besetzt, bis 18:00 Uhr';
+    else if (workday && mins < 960) txt = 'Büro heute ab 16:00 Uhr besetzt';
+    else if (d >= 1 && d <= 4) txt = 'Büro morgen ab 16:00 Uhr besetzt';
+    else txt = 'Büro am Montag ab 16:00 Uhr besetzt';
+    document.querySelectorAll('[data-status]').forEach(function(el){
+      el.classList.toggle('open', open);
+      el.querySelector('.st-txt').textContent = txt;
+    });
+  } catch (e) {}
+
+  // switchboard tabs: flipping a breaker opens its service
+  var tabs = [].slice.call(document.querySelectorAll('.mcb'));
+  function select(tab, focus){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      var k = e.key, n = tabs.length, j = null;
+      if (k === 'ArrowRight' || k === 'ArrowDown') j = (i + 1) % n;
+      else if (k === 'ArrowLeft' || k === 'ArrowUp') j = (i - 1 + n) % n;
+      else if (k === 'Home') j = 0; else if (k === 'End') j = n - 1;
+      if (j !== null){ e.preventDefault(); select(tabs[j], true); }
+    });
+  });
+
+  // one load moment: the main breaker switches on when the board first comes into view
+  var cab = document.getElementById('cab');
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!still && 'IntersectionObserver' in window && cab.getBoundingClientRect().top > innerHeight){
+    cab.classList.add('boot');
+    var io = new IntersectionObserver(function(es){
+      if (es[0].isIntersecting){ io.disconnect(); setTimeout(function(){ cab.classList.remove('boot'); }, 350); }
+    }, { threshold: 0.5 });
+    io.observe(cab);
+  }
+
+  // phone call bar: hidden while the hero (with its own buttons) or the contact block is on screen
+  var bar = document.getElementById('callbar');
+  if ('IntersectionObserver' in window){
+    var seen = {};
+    var bio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ seen[e.target.id] = e.isIntersecting; });
+      bar.classList.toggle('away', !!(seen.start || seen.kontakt));
+    });
+    bio.observe(document.getElementById('start'));
+    bio.observe(document.getElementById('kontakt'));
+  }
+
+  // copy e-mail address
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var label = btn.textContent;
+      var done = function(){ btn.textContent = 'Kopiert'; setTimeout(function(){ btn.textContent = label; }, 1600); };
+      var fallback = function(){
+        var r = document.createRange(); r.selectNodeContents(document.getElementById('mailaddr'));
+        var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      };
+      try { navigator.clipboard.writeText(btn.dataset.copy).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
